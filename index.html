@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mother Lap School Peshawar</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300;400;500;600;700;800&family=Cinzel:wght=600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS (Animate on Scroll) Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .font-header {
+            font-family: 'Cinzel', serif;
+        }
+        
+        /* Shimmer and Floating effects */
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+        .logo-float {
+            animation: gentleFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmerSweep {
+            0% { transform: translateX(-150%) rotate(45deg); }
+            100% { transform: translateX(150%) rotate(45deg); }
+        }
+        .logo-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: linear-gradient(
+                45deg, 
+                transparent 45%, 
+                rgba(255, 255, 255, 0.6) 50%, 
+                transparent 55%
+            );
+            transform: rotate(45deg);
+            animation: shimmerSweep 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        /* Smooth View Transitions */
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+
+    <!-- Top Utility Contacts & Social Media Advertising Bar -->
+    <div class="bg-blue-900 text-white text-xs md:text-sm py-2.5 px-4 md:px-6 flex flex-col sm:flex-row justify-between items-center gap-3 border-b border-blue-800/50">
+        <div class="flex flex-wrap justify-center sm:justify-start items-center gap-3 md:gap-4">
+            <span><i class="fa-solid fa-location-dot text-amber-400 mr-1.5"></i> Ring Road, Peshawar</span>
+            <span class="hidden sm:inline opacity-30">|</span>
+            <span><i class="fa-solid fa-phone text-amber-400 mr-1.5"></i> 0300-9808330</span>
+        </div>
+        <div class="flex flex-wrap justify-center sm:justify-end items-center gap-3 md:gap-4">
+            <a href="mailto:schoolmotherlap@gmail.com" class="hover:text-amber-300 transition-colors"><i class="fa-solid fa-envelope mr-1.5"></i> schoolmotherlap@gmail.com</a>
+            
+            <!-- Embedded Social Media Direct Links -->
+            <div class="flex items-center space-x-2.5 bg-blue-950/60 px-3 py-1 rounded-full border border-blue-700/40">
+                <span class="text-[10px] uppercase font-bold tracking-wider text-slate-300">Follow Us:</span>
+                <a href="https://facebook.com/profile.php?id=100090081439115" target="_blank" class="text-blue-400 hover:text-white transition-colors text-sm" title="Facebook Page"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://tiktok.com/@motherlapschool?is_from_webapp=1&sender_device=pc" target="_blank" class="text-pink-400 hover:text-white transition-colors text-sm" title="TikTok Profile"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://youtube.com/@mlsvoice_official?si=exPId-RGYly-vCTe" target="_blank" class="text-red-400 hover:text-white transition-colors text-sm" title="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+
+            <span class="bg-red-600 px-3 py-0.5 rounded text-[11px] font-bold tracking-wider animate-pulse">ESTD. 2014</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-24 flex items-center justify-between">
+            
+            <!-- Logo Section -->
+            <a href="#" onclick="switchTab('home')" class="flex items-center space-x-3 md:space-x-4 group py-2">
+                <div class="logo-float logo-shimmer relative w-14 h-14 md:w-16 md:h-16 bg-white border-2 border-amber-400 rounded-full p-0.5 shadow-lg group-hover:scale-105 transition-all duration-300">
+                    <img src="mls.JPG" alt="Crest" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/1e3a8a?text=MLS';">
+                </div>
+                <div>
+                    <span class="text-lg md:text-2xl font-extrabold text-blue-900 tracking-tight block font-header">THE MOTHER LAP</span>
+                    <span class="text-[10px] md:text-xs text-red-600 tracking-widest font-bold block uppercase -mt-0.5">School Peshawar</span>
+                </div>
+            </a>
+
+            <!-- Premium Tab Menu Navigation -->
+            <nav class="hidden lg:flex items-center space-x-2 xl:space-x-5 font-bold">
+                <button onclick="switchTab('home')" class="nav-link text-blue-900 hover:text-red-600 transition-colors py-2 px-2 border-b-2 border-transparent" id="nav-home">Home</button>
+                <button onclick="switchTab('about')" class="nav-link text-slate-600 hover:text-blue-900 transition-colors py-2 px-2 border-b-2 border-transparent" id="nav-about">About Us</button>
+                <button onclick="switchTab('leadership')" class="nav-link text-slate-600 hover:text-blue-900 transition-colors py-2 px-2 border-b-2 border-transparent" id="nav-leadership">Leadership</button>
+                <button onclick="switchTab('branches')" class="nav-link text-slate-600 hover:text-blue-900 transition-colors py-2 px-2 border-b-2 border-transparent" id="nav-branches">Our 5 Branches</button>
+                <button onclick="switchTab('gallery')" class="nav-link text-slate-600 hover:text-blue-900 transition-colors py-2 px-2 border-b-2 border-transparent" id="nav-gallery">Gallery</button>
+                <button onclick="switchTab('academics')" class="nav-link text-slate-600 hover:text-blue-900 transition-colors py-2 px-2 border-b-2 border-transparent" id="nav-academics">Academics</button>
+                <button onclick="switchTab('inquiries')" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-sm rounded-xl shadow-md transition-all duration-300 transform hover:-translate-y-0.5 flex items-center gap-2" id="nav-inquiries"><i class="fa-brands fa-whatsapp text-base"></i> Ask Questions</button>
+            </nav>
+
+            <!-- Mobile Hamburger Menu Button -->
+            <button id="menuBtn" class="lg:hidden text-slate-700 focus:outline-none p-2 rounded-lg hover:bg-slate-100 transition-colors">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden bg-white border-t border-slate-100 px-6 py-4 space-y-3 shadow-lg absolute w-full left-0 transition-all duration-300">
+            <button onclick="switchTab('home')" class="block w-full text-left text-slate-700 font-bold hover:text-blue-900 py-2 border-b border-slate-50">Home</button>
+            <button onclick="switchTab('about')" class="block w-full text-left text-slate-700 font-bold hover:text-blue-900 py-2 border-b border-slate-50">About Us</button>
+            <button onclick="switchTab('leadership')" class="block w-full text-left text-slate-700 font-bold hover:text-blue-900 py-2 border-b border-slate-50">Our Leadership</button>
+            <button onclick="switchTab('branches')" class="block w-full text-left text-slate-700 font-bold hover:text-blue-900 py-2 border-b border-slate-50">Our 5 Branches</button>
+            <button onclick="switchTab('gallery')" class="block w-full text-left text-slate-700 font-bold hover:text-blue-900 py-2 border-b border-slate-50">School Gallery</button>
+            <button onclick="switchTab('academics')" class="block w-full text-left text-slate-700 font-bold hover:text-blue-900 py-2 border-b border-slate-50">Academics & Events</button>
+            <button onclick="switchTab('inquiries')" class="block text-center py-3 bg-emerald-600 text-white rounded-xl font-bold shadow-md mt-4"><i class="fa-brands fa-whatsapp mr-1.5"></i> Ask Questions</button>
+        </div>
+    </header>
+
+    <!-- ================== TAB: HOME ================== -->
+    <main id="tab-home" class="tab-content active">
+        <!-- Hero Section -->
+        <section class="relative min-h-[75vh] md:min-h-[80vh] flex items-center bg-gradient-to-br from-blue-950 via-blue-900 to-slate-950 text-white py-12 md:py-16 px-4 md:px-6 overflow-hidden">
+            <div class="absolute w-72 h-72 md:w-96 md:h-96 bg-red-600/10 rounded-full blur-3xl -top-10 -left-10"></div>
+            <div class="absolute w-80 h-80 md:w-[500px] md:h-[500px] bg-amber-400/10 rounded-full blur-3xl -bottom-20 -right-20"></div>
+
+            <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 items-center relative z-10 w-full">
+                <div data-aos="fade-right" class="space-y-4 md:space-y-6 text-center md:text-left">
+                    <span class="px-3 py-1 bg-amber-400/10 border border-amber-400/30 rounded-full text-amber-400 text-[11px] md:text-sm font-semibold tracking-wider uppercase inline-block">
+                        ★ RESPECT • RESPONSIBILITY • EXCELLENCE
+                    </span>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight font-header">
+                        Education Infused With <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">Maternal Care</span>
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-xl mx-auto md:mx-0 leading-relaxed">
+                        At <strong class="text-white">The Mother Lap School</strong>, we combine safety, high moral values, and academic quality across our customized campuses in Peshawar.
+                    </p>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+                        <button onclick="switchTab('inquiries')" class="w-full sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Have a Question? Ask Us
+                        </button>
+                        <button onclick="switchTab('branches')" class="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold rounded-xl transition-all duration-300">
+                            Explore 5 Branches
+                        </button>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left" class="flex justify-center mt-6 md:mt-0">
+                    <div class="relative w-full max-w-[280px] sm:max-w-sm aspect-square bg-gradient-to-br from-slate-900 to-blue-950 border border-blue-800 rounded-3xl shadow-2xl flex flex-col items-center justify-center p-6 md:p-8 text-center">
+                        <div class="logo-float w-32 h-32 md:w-40 md:h-40 bg-white rounded-full p-2 border-4 border-amber-400 shadow-xl mb-4 relative overflow-hidden logo-shimmer">
+                            <img src="mls.JPG" alt="Official Crest" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/1e3a8a?text=MLS';">
+                        </div>
+                        <h3 class="text-base md:text-lg font-bold text-white tracking-wide font-header">SINCE 2014</h3>
+                        <p class="text-amber-400 text-[10px] md:text-xs tracking-widest font-semibold uppercase mt-1">PESHAWAR CAMPUS</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="bg-white py-10 shadow-sm border-b border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
+                <div class="p-2 md:p-4" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="text-3xl md:text-4xl font-extrabold text-blue-900">5</div>
+                    <div class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Custom Campuses</div>
+                </div>
+                <div class="p-2 md:p-4" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="text-3xl md:text-4xl font-extrabold text-red-600">100%</div>
+                    <div class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Safety & Care</div>
+                </div>
+                <div class="p-2 md:p-4" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="text-2xl md:text-4xl font-extrabold text-blue-900">Separate</div>
+                    <div class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Boys & Girls wings</div>
+                </div>
+                <div class="p-2 md:p-4" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="text-3xl md:text-4xl font-extrabold text-red-600">12+ Yrs</div>
+                    <div class="text-[10px] md:text-xs font-bold text-slate-500 uppercase tracking-widest mt-1">Academic Legacy</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================== TAB: ABOUT US ================== -->
+    <main id="tab-about" class="tab-content">
+        <section class="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-12 md:space-y-16">
+            <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
+                <div class="space-y-4 md:space-y-6">
+                    <span class="text-xs md:text-sm font-extrabold text-red-600 uppercase tracking-widest">Our Story & Ethos</span>
+                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-header">Providing Safety, Fostering Intellect</h2>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                        Founded in <strong>2014</strong>, The Mother Lap School in Peshawar has spent over a decade establishing a learning ecosystem where young pupils feel protected, cherished, and challenged to achieve academic greatness.
+                    </p>
+                    <p class="text-slate-600 text-sm md:text-base leading-relaxed">
+                        Our specialized separation policies for boys and girls support cultural expectations perfectly while providing highly focused classroom instruction.
+                    </p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-900 to-slate-950 text-white p-6 md:p-8 rounded-[1.5rem] md:rounded-[2rem] shadow-xl relative overflow-hidden">
+                    <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-amber-400/10 rounded-full blur-2xl"></div>
+                    <h3 class="text-lg md:text-xl font-bold font-header mb-4 text-amber-300">Our Core Pillars</h3>
+                    <div class="space-y-4 text-xs md:text-sm">
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-square-check text-amber-400 mt-1"></i>
+                            <p><strong>Integrity & Morals:</strong> Instilling traditional Islamic and cultural values daily.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-square-check text-amber-400 mt-1"></i>
+                            <p><strong>Science-Focused Curricula:</strong> Cutting-edge visual instruction and early coding habits.</p>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <i class="fa-solid fa-square-check text-amber-400 mt-1"></i>
+                            <p><strong>Constant Supervision:</strong> Campus entry and exit checkpoints to ensure absolute parent peace of mind.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================== TAB: LEADERSHIP ================== -->
+    <main id="tab-leadership" class="tab-content">
+        <section class="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-10 md:space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3 md:space-y-4">
+                <span class="text-xs md:text-sm font-extrabold text-red-600 uppercase tracking-widest font-header">Our Pillars</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-header">School Leadership Desk</h2>
+                <p class="text-slate-600 text-sm md:text-base">Driven by passion, guided by experience. Meet the minds shaping the future of Peshawar's youth.</p>
+            </div>
+
+            <!-- Leadership Team Cards -->
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+                <!-- CEO Card -->
+                <div class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-md hover:shadow-xl transition-all duration-300 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-900 to-amber-500"></div>
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 md:mb-6 border-4 border-slate-50 group-hover:scale-105 transition-transform duration-300 shadow-md overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <img src="images/ceo.jpg" alt="CEO Naseer Ullah" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/1e3a8a/ffffff?text=CEO';">
+                    </div>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-900 font-bold text-[10px] tracking-wider uppercase rounded-full">Chief Executive Officer</span>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-3 font-header">Naseer Ullah</h3>
+                    <p class="text-slate-500 text-xs md:text-sm mt-4 leading-relaxed">
+                        "Our core commitment is to offer a nurturing ground where parents can entrust their children's morals and safety alongside international academic curricula."
+                    </p>
+                </div>
+
+                <!-- Director Card -->
+                <div class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-md hover:shadow-xl transition-all duration-300 text-center relative overflow-hidden group">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-red-600 to-amber-500"></div>
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 md:mb-6 border-4 border-slate-50 group-hover:scale-105 transition-transform duration-300 shadow-md overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <img src="images/dr.png" alt="Director Dr. Shahid Ullah" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/dc2626/ffffff?text=Director';">
+                    </div>
+                    <span class="px-3 py-1 bg-red-100 text-red-600 font-bold text-[10px] tracking-wider uppercase rounded-full">Director Operations</span>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-3 font-header">Dr. Shahid Ullah</h3>
+                    <p class="text-amber-600 text-xs font-semibold uppercase tracking-wider mt-1">PhD Physics</p>
+                    <p class="text-slate-500 text-xs md:text-sm mt-3 leading-relaxed">
+                        "Operational safety, separate campus management, and continuous modern training facilities are meticulously overseen to build real-world capabilities."
+                    </p>
+                </div>
+
+                <!-- Principal Card -->
+                <div class="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-md hover:shadow-xl transition-all duration-300 text-center relative overflow-hidden group sm:col-span-2 md:col-span-1 max-w-sm sm:max-w-full mx-auto w-full">
+                    <div class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-900 to-red-600"></div>
+                    <div class="w-24 h-24 md:w-32 md:h-32 rounded-full mx-auto mb-4 md:mb-6 border-4 border-slate-50 group-hover:scale-105 transition-transform duration-300 shadow-md overflow-hidden bg-slate-100 flex items-center justify-center">
+                        <img src="images/principal.png" alt="Principal Abdul Hameed Awan" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/150x150/d97706/ffffff?text=Principal';">
+                    </div>
+                    <span class="px-3 py-1 bg-amber-100 text-amber-800 font-bold text-[10px] tracking-wider uppercase rounded-full">Principal Academics</span>
+                    <h3 class="text-lg md:text-xl font-bold text-slate-900 mt-3 font-header">Abdul Hameed Awan</h3>
+                    <p class="text-slate-500 text-xs md:text-sm mt-4 leading-relaxed">
+                        "Through customized visual aids, targeted evaluations, and individualized attention, we shape active leaders capable of navigating future fields."
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================== TAB: SEPARATE BRANCHES ================== -->
+    <main id="tab-branches" class="tab-content">
+        <section class="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-10 md:space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3 md:space-y-4">
+                <span class="text-xs md:text-sm font-extrabold text-blue-900 uppercase tracking-widest font-header">Education Network</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-header">Our 5 Specialized Branches</h2>
+                <p class="text-slate-600 text-sm md:text-base">Designed carefully with fully distinct academic wings to preserve traditional comfort parameters and focused, gender-specific guidance.</p>
+            </div>
+
+            <!-- Branch Selector Tabs (Horizontal Submenu) -->
+            <div class="flex flex-wrap justify-center gap-2 max-w-4xl mx-auto mb-8 md:mb-10">
+                <button onclick="showBranch('b1')" class="branch-tab-btn flex-1 sm:flex-initial text-center px-3 md:px-4 py-2.5 rounded-xl font-bold text-[11px] md:text-sm shadow-sm border border-slate-200/80 bg-blue-900 text-white transition-all" id="btn-b1">Muzammil Town (PG-3)</button>
+                <button onclick="showBranch('b2')" class="branch-tab-btn flex-1 sm:flex-initial text-center px-3 md:px-4 py-2.5 rounded-xl font-bold text-[11px] md:text-sm shadow-sm border border-slate-200/80 bg-white text-slate-700 hover:bg-slate-50 transition-all" id="btn-b2">Muzammil Town (Girls 4-10)</button>
+                <button onclick="showBranch('b3')" class="branch-tab-btn flex-1 sm:flex-initial text-center px-3 md:px-4 py-2.5 rounded-xl font-bold text-[11px] md:text-sm shadow-sm border border-slate-200/80 bg-white text-slate-700 hover:bg-slate-50 transition-all" id="btn-b3">Muzammil Town (Boys 4-10)</button>
+                <button onclick="showBranch('b4')" class="branch-tab-btn flex-1 sm:flex-initial text-center px-3 md:px-4 py-2.5 rounded-xl font-bold text-[11px] md:text-sm shadow-sm border border-slate-200/80 bg-white text-slate-700 hover:bg-slate-50 transition-all" id="btn-b4">Wazir Colony (PG-7)</button>
+                <button onclick="showBranch('b5')" class="branch-tab-btn flex-1 sm:flex-initial text-center px-3 md:px-4 py-2.5 rounded-xl font-bold text-[11px] md:text-sm shadow-sm border border-slate-200/80 bg-white text-slate-700 hover:bg-slate-50 transition-all" id="btn-b5">Qazi Abad (PG-10)</button>
+            </div>
+
+            <!-- Branch Detail Cards Wrapper -->
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Branch 1: Muzammil Town Junior -->
+                <div id="branch-b1" class="branch-content-panel block bg-white border border-slate-100 rounded-2xl md:rounded-[2rem] p-6 md:p-12 shadow-lg space-y-4 md:space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                        <div>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-900 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wide">Main Branch</span>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 md:mt-2 font-header">Muzammil Town Junior Wing</h3>
+                        </div>
+                        <span class="self-start sm:self-auto px-4 py-1.5 bg-emerald-500/10 text-emerald-600 rounded-full text-xs md:text-sm font-bold"><i class="fa-solid fa-graduation-cap mr-1.5"></i> Playgroup to Class 3rd</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-xs md:text-base">
+                        Our primary flagship campus focuses on early childhood care. We use sensory-based teaching tools and high maternal warmth to welcome our youngest learners into school life.
+                    </p>
+                    <div class="border-t border-slate-100 pt-4 md:pt-6">
+                        <span class="text-slate-500 text-[10px] md:text-xs font-bold uppercase block tracking-wider mb-1.5">Direct Contact Number</span>
+                        <a href="tel:03009808330" class="text-blue-900 text-lg md:text-xl font-extrabold hover:underline"><i class="fa-solid fa-phone mr-2 text-amber-500"></i>0300-9808330</a>
+                    </div>
+                </div>
+
+                <!-- Branch 2: Muzammil Town Girls Senior -->
+                <div id="branch-b2" class="branch-content-panel hidden bg-white border border-slate-100 rounded-2xl md:rounded-[2rem] p-6 md:p-12 shadow-lg space-y-4 md:space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                        <div>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wide">Second Branch</span>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 md:mt-2 font-header">Muzammil Town Girls Wing</h3>
+                        </div>
+                        <span class="self-start sm:self-auto px-4 py-1.5 bg-emerald-500/10 text-emerald-600 rounded-full text-xs md:text-sm font-bold"><i class="fa-solid fa-venus mr-1.5"></i> Class 4th to 10th (Girls)</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-xs md:text-base">
+                        A highly secure, distraction-free atmosphere tailored for female education. This wing guides girl students from basic upper grades up to Board Matriculation preparation.
+                    </p>
+                    <div class="border-t border-slate-100 pt-4 md:pt-6">
+                        <span class="text-slate-500 text-[10px] md:text-xs font-bold uppercase block tracking-wider mb-1.5">Direct Contact Number</span>
+                        <a href="tel:03140909795" class="text-blue-900 text-lg md:text-xl font-extrabold hover:underline"><i class="fa-solid fa-phone mr-2 text-amber-500"></i>0314 0909795</a>
+                    </div>
+                </div>
+
+                <!-- Branch 3: Muzammil Town Boys Senior -->
+                <div id="branch-b3" class="branch-content-panel hidden bg-white border border-slate-100 rounded-2xl md:rounded-[2rem] p-6 md:p-12 shadow-lg space-y-4 md:space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                        <div>
+                            <span class="px-3 py-1 bg-indigo-100 text-indigo-900 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wide">Third Branch (Same Location)</span>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 md:mt-2 font-header">Muzammil Town Boys Wing</h3>
+                        </div>
+                        <span class="self-start sm:self-auto px-4 py-1.5 bg-emerald-500/10 text-emerald-600 rounded-full text-xs md:text-sm font-bold"><i class="fa-solid fa-mars mr-1.5"></i> Class 4th to 10th (Boys)</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-xs md:text-base">
+                        Sharing a safe location but with fully isolated entrances and facilities, this campus encourages science lab experimentation, healthy peer discussions, and rigorous exam training.
+                    </p>
+                    <div class="border-t border-slate-100 pt-4 md:pt-6">
+                        <span class="text-slate-500 text-[10px] md:text-xs font-bold uppercase block tracking-wider mb-1.5">Direct Contact Number</span>
+                        <a href="tel:03329592933" class="text-blue-900 text-lg md:text-xl font-extrabold hover:underline"><i class="fa-solid fa-phone mr-2 text-amber-500"></i>0332 9592933</a>
+                    </div>
+                </div>
+
+                <!-- Branch 4: Wazir Colony -->
+                <div id="branch-b4" class="branch-content-panel hidden bg-white border border-slate-100 rounded-2xl md:rounded-[2rem] p-6 md:p-12 shadow-lg space-y-4 md:space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                        <div>
+                            <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wide">Peshawar Main Community Campus</span>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 md:mt-2 font-header">Wazir Colony Campus</h3>
+                        </div>
+                        <span class="self-start sm:self-auto px-4 py-1.5 bg-emerald-500/10 text-emerald-600 rounded-full text-xs md:text-sm font-bold"><i class="fa-solid fa-graduation-cap mr-1.5"></i> Playgroup to Class 7th</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-xs md:text-base">
+                        A beautiful, safe residential campus setup near the main hub, bringing modern resources, computer classes, and specialized teachers closer to our Wazir Colony families.
+                    </p>
+                    <div class="border-t border-slate-100 pt-4 md:pt-6">
+                        <span class="text-slate-500 text-[10px] md:text-xs font-bold uppercase block tracking-wider mb-1.5">Direct Contact Number</span>
+                        <a href="tel:03152329290" class="text-blue-900 text-lg md:text-xl font-extrabold hover:underline"><i class="fa-solid fa-phone mr-2 text-amber-500"></i>0315 2329290</a>
+                    </div>
+                </div>
+
+                <!-- Branch 5: Qazi Abad -->
+                <div id="branch-b5" class="branch-content-panel hidden bg-white border border-slate-100 rounded-2xl md:rounded-[2rem] p-6 md:p-12 shadow-lg space-y-4 md:space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                        <div>
+                            <span class="px-3 py-1 bg-violet-100 text-violet-800 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-wide">Qazi Abad Sub-Campus</span>
+                            <h3 class="text-xl md:text-2xl font-extrabold text-slate-900 mt-1 md:mt-2 font-header">Qazi Abad Campus</h3>
+                        </div>
+                        <span class="self-start sm:self-auto px-4 py-1.5 bg-emerald-500/10 text-emerald-600 rounded-full text-xs md:text-sm font-bold"><i class="fa-solid fa-graduation-cap mr-1.5"></i> Playgroup to 10th Class</span>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed text-xs md:text-base">
+                        Providing comprehensive educational pathways ranging from playgroup play activities up to final Matric classes for students in Qazi Abad and neighboring colonies.
+                    </p>
+                    <div class="border-t border-slate-100 pt-4 md:pt-6">
+                        <span class="text-slate-500 text-[10px] md:text-xs font-bold uppercase block tracking-wider mb-1.5">Direct Contact Number</span>
+                        <a href="tel:03130900268" class="text-blue-900 text-lg md:text-xl font-extrabold hover:underline"><i class="fa-solid fa-phone mr-2 text-amber-500"></i>0313 0900268</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- ================== TAB: GALLERY ================== -->
+    <main id="tab-gallery" class="tab-content">
+        <section class="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-10 md:space-y-12">
+            <div class="text-center max-w-2xl mx-auto space-y-3 md:space-y-4">
+                <span class="text-xs md:text-sm font-extrabold text-red-600 uppercase tracking-widest font-header">Captured Moments</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-header">Our School Gallery</h2>
+                <p class="text-slate-600 text-sm md:text-base">Have a glimpse of campus activities, events, and academic excellence at The Mother Lap School.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-6 md:mb-8">
+                <button onclick="filterGallery('all')" class="gallery-filter-btn px-4 py-2 rounded-full bg-blue-900 text-white font-bold text-[11px] md:text-xs uppercase tracking-wider transition-all" id="btn-all">Show All</button>
+                <button onclick="filterGallery('shahid-graduation')" class="gallery-filter-btn px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 font-bold text-[11px] md:text-xs uppercase tracking-wider transition-all" id="btn-shahid-graduation"><i class="fa-solid fa-graduation-cap mr-1 text-amber-500"></i> Dr. Shahid Graduation</button>
+                <button onclick="filterGallery('science-exhibition')" class="gallery-filter-btn px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 font-bold text-[11px] md:text-xs uppercase tracking-wider transition-all" id="btn-science-exhibition">Science Exhibition</button>
+                <button onclick="filterGallery('activities-pics')" class="gallery-filter-btn px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 font-bold text-[11px] md:text-xs uppercase tracking-wider transition-all" id="btn-activities-pics">Activities Pics</button>
+                <button onclick="filterGallery('campus')" class="gallery-filter-btn px-4 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 font-bold text-[11px] md:text-xs uppercase tracking-wider transition-all" id="btn-campus">Classrooms</button>
+            </div>
+
+            <!-- Gallery Grid Layout -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+                <!-- Dr Shahid Graduation Pic 1 -->
+                <div class="gallery-item shahid-graduation relative rounded-2xl overflow-hidden group shadow-md aspect-video cursor-pointer" onclick="openLightbox(this)">
+                    <img src="images/gradua.JPG" alt="Dr. Shahid Ullah PhD Convocation" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=800';">
+                    <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all duration-300 p-4 text-center text-white">
+                        <span class="text-xs font-bold text-amber-400 tracking-wider block mb-1">DR. SHAHID ULLAH</span>
+                        <p class="text-[10px] text-slate-200">PhD Physics Graduation Ceremony</p>
+                    </div>
+                </div>
+
+                <!-- Dr Shahid Graduation Pic 2 -->
+                <div class="gallery-item shahid-graduation relative rounded-2xl overflow-hidden group shadow-md aspect-video cursor-pointer" onclick="openLightbox(this)">
+                    <img src="images/gra.JPG" alt="Dr. Shahid Ullah Academic Award" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=800';">
+                    <div class="absolute inset-0 bg-slate-900/70 opacity-0 group-hover:opacity-100 flex flex-col items-center justify-center transition-all duration-300 p-4 text-center text-white">
+                        <span class="text-xs font-bold text-amber-400 tracking-wider block mb-1">RESEARCH AWARD</span>
+                        <p class="text-[10px] text-slate-200">Senior Leadership Academic Milestone</p>
+                    </div>
+                </div>
+
+                <!-- Science Exhibition Item 1 -->
+                <div class="gallery-item science-exhibition relative rounded-2xl overflow-hidden group shadow-md aspect-video cursor-pointer" onclick="openLightbox(this)">
+                    <img src="images/scinc.jpg" alt="Science Exhibition Project Presentation" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=800';">
+                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                        <span class="px-4 py-2 bg-white text-slate-900 rounded-full text-xs font-bold shadow-lg"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Science Exhibition</span>
+                    </div>
+                </div>
+
+                <!-- Activities Pics Item 1 -->
+                <div class="gallery-item activities-pics relative rounded-2xl overflow-hidden group shadow-md aspect-video cursor-pointer" onclick="openLightbox(this)">
+                    <img src="images/activity2.jpg" alt="Students Activity Event" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80&w=800';">
+                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                        <span class="px-4 py-2 bg-white text-slate-900 rounded-full text-xs font-bold shadow-lg"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Campus Activity</span>
+                    </div>
+                </div>
+
+                <!-- Science Exhibition Item 2 -->
+                <div class="gallery-item science-exhibition relative rounded-2xl overflow-hidden group shadow-md aspect-video cursor-pointer" onclick="openLightbox(this)">
+                    <img src="images/science.jpg" alt="Science Exhibition Laboratory Experiment" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=800';">
+                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                        <span class="px-4 py-2 bg-white text-slate-900 rounded-full text-xs font-bold shadow-lg"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> Science Exhibition</span>
+                    </div>
+                </div>
+
+                <!-- Classrooms/Campus Item -->
+                <div class="gallery-item campus relative rounded-2xl overflow-hidden group shadow-md aspect-video cursor-pointer" onclick="openLightbox(this)">
+                    <img src="images/class room.jpg" alt="Campus Classroom Setup" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80&w=800';">
+                    <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-all duration-300">
+                        <span class="px-4 py-2 bg-white text-slate-900 rounded-full text-xs font-bold shadow-lg"><i class="fa-solid fa-magnifying-glass-plus mr-1"></i> View Classroom</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Pop-up Viewer Overlay -->
+        <div id="lightbox" class="fixed inset-0 bg-black/90 z-[9999] hidden flex items-center justify-center p-4">
+            <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-red-500 transition-colors">
+                <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+            <img id="lightbox-img" src="" alt="Popup View" class="max-w-full max-h-[85vh] rounded-xl shadow-2xl object-contain">
+        </div>
+    </main>
+
+    <!-- ================== TAB: ACADEMICS & EVENTS ================== -->
+    <main id="tab-academics" class="tab-content">
+        <section class="py-12 md:py-20 px-4 md:px-6 max-w-7xl mx-auto space-y-12 md:space-y-16">
+            <div class="text-center max-w-2xl mx-auto space-y-3 md:space-y-4">
+                <span class="text-xs md:text-sm font-extrabold text-blue-900 uppercase tracking-widest font-header">School Timeline</span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 font-header">Academics & Events Schedule</h2>
+                <p class="text-slate-600 text-sm md:text-base">Follow our planned dates closely to prepare for continuous school activities.</p>
+            </div>
+
+            <!-- Events & FAQ Layout -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-6">
+                    <h3 class="text-lg md:text-xl font-bold text-blue-900 font-header border-b-2 border-slate-200 pb-2"><i class="fa-solid fa-calendar-days text-amber-500 mr-2"></i>Upcoming Events</h3>
+                    <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-200 space-y-4 shadow-sm">
+                        <div class="flex items-center space-x-4">
+                            <div class="px-3 md:px-4 py-2 bg-blue-100 text-blue-900 font-bold rounded-xl text-center shrink-0 min-w-[60px]">
+                                <span class="block text-xs md:text-sm">AUG</span>
+                                <span class="block text-lg md:text-xl">14</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm md:text-base">Independence Day Celebrations</h4>
+                                <p class="text-slate-500 text-xs">Separate assemblies organized for all wings.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="px-3 md:px-4 py-2 bg-red-100 text-red-600 font-bold rounded-xl text-center shrink-0 min-w-[60px]">
+                                <span class="block text-xs md:text-sm">SEP</span>
+                                <span class="block text-lg md:text-xl">05</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm md:text-base">Mid-Term Assessment Launch</h4>
+                                <p class="text-slate-500 text-xs">Primary & Secondary levels examination sessions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Academic FAQ Accordions -->
+                <div class="space-y-6">
+                    <h3 class="text-lg md:text-xl font-bold text-blue-900 font-header border-b-2 border-slate-200 pb-2"><i class="fa-solid fa-circle-question text-amber-500 mr-2"></i>Parents FAQ</h3>
+                    <div class="space-y-3">
+                        <details class="bg-white rounded-xl border border-slate-200 p-4 group cursor-pointer" open>
+                            <summary class="font-bold text-slate-900 text-sm md:text-base list-none flex justify-between items-center">
+                                Where are the branches located?
+                                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-sm"></i>
+                            </summary>
+                            <p class="text-slate-600 text-xs leading-relaxed mt-3">
+                                Our campuses are located across Muzammil Town (which includes 3 separate wings for absolute protection), Wazir Colony, and Qazi Abad in Peshawar.
+                            </p>
+                        </details>
+                        <details class="bg-white rounded-xl border border-slate-200 p-4 group cursor-pointer">
+                            <summary class="font-bold text-slate-900 text-sm md:text-base list-none flex justify-between items-center">
+                                Are the Boys & Girls campus locations fully apart?
+                                <i class="fa-solid fa-chevron-down group-open:rotate-180 transition-transform text-sm"></i>
+                            </summary>
+                            <p class="text-slate-600 text-xs leading-relaxed mt-3">
+                                Yes. For grades 4th to 10th, we maintain completely distinct physical spaces with dedicated faculty to ensure traditional security parameters.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================== TAB: INQUIRIES & QUESTIONS ================== -->
+    <main id="tab-inquiries" class="tab-content">
+        <section class="py-8 md:py-20 px-4 md:px-6 max-w-7xl mx-auto">
+            <div class="bg-gradient-to-tr from-blue-950 via-blue-900 to-slate-950 rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-16 relative overflow-hidden text-white shadow-xl">
+                <div class="absolute w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-3xl -top-20 -left-20"></div>
+
+                <div class="grid md:grid-cols-2 gap-10 md:gap-12 relative z-10 items-center">
+                    <div class="space-y-4 md:space-y-6 text-center md:text-left">
+                        <span class="text-xs md:text-sm font-extrabold text-amber-400 uppercase tracking-widest">Instant Support Desk</span>
+                        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight font-header">Have Questions? Ask Us Directly</h2>
+                        <p class="text-slate-300 text-xs md:text-base leading-relaxed">
+                            Select one of our quick questions below or write a custom inquiry. Clicking the button will instantly route you to our WhatsApp chat support line.
+                        </p>
+                        <div class="flex flex-col items-center md:items-start gap-4 pt-2 text-xs sm:text-sm">
+                            <div class="flex items-center space-x-3 text-slate-300">
+                                <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-emerald-400 shrink-0"><i class="fa-brands fa-whatsapp text-lg"></i></div>
+                                <span>WhatsApp Help Desk: 0300-9808330</span>
+                            </div>
+                            <div class="flex items-center space-x-3 text-slate-300">
+                                <div class="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center text-amber-400 shrink-0"><i class="fa-solid fa-envelope"></i></div>
+                                <span class="break-all">schoolmotherlap@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Question & Inquiry Desk Component -->
+                    <div class="bg-white rounded-2xl md:rounded-3xl p-5 md:p-8 text-slate-800 shadow-2xl">
+                        <h3 class="text-lg md:text-xl font-bold text-slate-900 mb-4 font-header text-center md:text-left">Select or Write Your Question</h3>
+                        
+                        <!-- Quick Click Options -->
+                        <div class="space-y-2 mb-5">
+                            <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500">Quick Questions:</label>
+                            <button onclick="setQuickQuestion('What is the monthly fee structure and registration process for new admissions?')" class="w-full text-left p-2.5 text-xs bg-slate-50 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 rounded-xl transition-all font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-circle-question text-emerald-500"></i> What is the monthly fee structure?
+                            </button>
+                            <button onclick="setQuickQuestion('What documents are required to enroll my child in the separate wings?')" class="w-full text-left p-2.5 text-xs bg-slate-50 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 rounded-xl transition-all font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-circle-question text-emerald-500"></i> What documents are required for enrollment?
+                            </button>
+                            <button onclick="setQuickQuestion('Do you offer school van transport services across Ring Road Peshawar campuses?')" class="w-full text-left p-2.5 text-xs bg-slate-50 hover:bg-emerald-50 hover:text-emerald-700 border border-slate-200 rounded-xl transition-all font-medium flex items-center gap-2">
+                                <i class="fa-solid fa-circle-question text-emerald-500"></i> Do you provide school transport options?
+                            </button>
+                        </div>
+
+                        <!-- Custom Query Option Form Layout -->
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Your Name</label>
+                                <input id="parent_inquiry_name" type="text" placeholder="Enter your name" class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-600 transition-all text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1.5">Your Question</label>
+                                <textarea id="custom_question_body" rows="3" placeholder="Type your customized question here..." class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:border-emerald-600 transition-all text-sm resize-none"></textarea>
+                            </div>
+                            <button onclick="sendQuestionToWhatsApp()" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-xl shadow-lg transition-all duration-300 mt-2 flex items-center justify-center space-x-2 text-sm">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Send Question to WhatsApp Chat</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Dedicated Social Media Advertising Section -->
+    <section class="bg-slate-100 py-12 px-4 md:px-6 border-t border-b border-slate-200">
+        <div class="max-w-7xl mx-auto space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <span class="text-xs font-extrabold text-blue-900 uppercase tracking-widest font-header">Digital Community</span>
+                <h2 class="text-2xl font-extrabold text-slate-900 font-header">Connect With Our Channels</h2>
+                <p class="text-slate-600 text-xs md:text-sm">Stay up to date with school video shorts, announcements, and performance snippets on our official media pages.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+                <!-- Facebook Ad Card -->
+                <a href="https://www.facebook.com/profile.php?id=100090081439115" target="_blank" class="bg-white border border-slate-200 rounded-2xl p-5 flex items-center space-x-4 shadow-sm hover:shadow-md hover:border-blue-500 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-md group-hover:scale-105 transition-transform"><i class="fa-brands fa-facebook-f"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">Facebook Page</h4>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Campus event photo streams & updates.</p>
+                        <span class="text-blue-600 text-[11px] font-bold mt-1 block">Like & Follow <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i></span>
+                    </div>
+                </a>
+
+                <!-- TikTok Ad Card -->
+                <a href="https://www.tiktok.com/@motherlapschool?is_from_webapp=1&sender_device=pc" target="_blank" class="bg-white border border-slate-200 rounded-2xl p-5 flex items-center space-x-4 shadow-sm hover:shadow-md hover:border-pink-500 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-slate-950 text-white flex items-center justify-center text-2xl shrink-0 shadow-md group-hover:scale-105 transition-transform"><i class="fa-brands fa-tiktok"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">TikTok Handle</h4>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Fun student clips & morning shorts.</p>
+                        <span class="text-pink-600 text-[11px] font-bold mt-1 block">Watch Videos <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i></span>
+                    </div>
+                </a>
+
+                <!-- YouTube Ad Card -->
+                <a href="https://youtube.com/@mlsvoice_official?si=exPId-RGYly-vCTe" target="_blank" class="bg-white border border-slate-200 rounded-2xl p-5 flex items-center space-x-4 shadow-sm hover:shadow-md hover:border-red-500 transition-all group">
+                    <div class="w-12 h-12 rounded-xl bg-red-600 text-white flex items-center justify-center text-2xl shrink-0 shadow-md group-hover:scale-105 transition-transform"><i class="fa-brands fa-youtube"></i></div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 text-sm">YouTube Channel</h4>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Annual speech events & video logs.</p>
+                        <span class="text-red-600 text-[11px] font-bold mt-1 block">Subscribe Now <i class="fa-solid fa-arrow-right ml-1 text-[9px]"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="bg-slate-950 text-slate-400 pt-12 md:pt-16 pb-8 border-t border-slate-900">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 mb-10">
+            <div class="space-y-4 text-center md:text-left">
+                <a href="#" class="flex items-center justify-center md:justify-start space-x-3">
+                    <div class="w-12 h-12 bg-white rounded-full p-1 border border-amber-400">
+                        <img src="mls.JPG" alt="Footer Crest" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='https://placehold.co/150x150/ffffff/1e3a8a?text=MLS';">
+                    </div>
+                    <span class="text-lg font-extrabold text-white font-header tracking-tight text-left">The Mother Lap<br><span class="text-[10px] text-red-600 block uppercase -mt-1.5 font-sans font-bold">School Peshawar</span></span>
+                </a>
+                <p class="text-xs md:text-sm max-w-xs mx-auto md:mx-0">Instilling respect, teaching responsibility, and enabling scholastic excellence in Peshawar since 2014.</p>
+            </div>
+            <div class="text-center md:text-left">
+                <h4 class="text-white font-bold mb-4 font-header tracking-wide text-sm md:text-base">Explore Tabs</h4>
+                <div class="grid grid-cols-2 gap-2 text-xs md:text-sm max-w-xs mx-auto md:mx-0">
+                    <button onclick="switchTab('about')" class="text-left hover:text-white transition-colors py-1">About Story</button>
+                    <button onclick="switchTab('branches')" class="text-left hover:text-white transition-colors py-1">Campuses</button>
+                    <button onclick="switchTab('gallery')" class="text-left hover:text-white transition-colors py-1">Gallery</button>
+                    <button onclick="switchTab('academics')" class="text-left hover:text-white transition-colors py-1">Calendar</button>
+                </div>
+            </div>
+            <div class="text-center md:text-left">
+                <h4 class="text-white font-bold mb-4 font-header tracking-wide text-sm md:text-base">Campus Office</h4>
+                <p class="text-xs md:text-sm leading-relaxed">
+                    Wazir Colony, Ring Road, Peshawar, Pakistan<br>
+                    <strong>Phone:</strong> 0300-9808330<br>
+                    <strong>Email:</strong> schoolmotherlap@gmail.com
+                </p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 md:px-6 border-t border-slate-900 pt-6 text-center text-[11px] text-slate-600 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p>&copy; 2026 The Mother Lap School. All rights reserved.</p>
+            <p class="tracking-widest hidden sm:block">RESPECT • RESPONSIBILITY • EXCELLENCE</p>
+        </div>
+    </footer>
+
+    <!-- AOS and Custom Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            duration: 800
+        });
+
+        // Mobile Menu Button Functionality
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // SPA Tab Router System
+        function switchTab(tabId) {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Show active tab
+            const activeTab = document.getElementById('tab-' + tabId);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            // Update Desktop Nav styles
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.classList.remove('text-blue-900', 'border-red-600');
+                link.classList.add('text-slate-600');
+            });
+            const activeLink = document.getElementById('nav-' + tabId);
+            if (activeLink) {
+                activeLink.classList.add('text-blue-900', 'border-red-600');
+                activeLink.classList.remove('text-slate-600');
+            }
+
+            // Securely auto-close mobile menu dropdown overlay
+            if (mobileMenu) {
+                mobileMenu.classList.add('hidden');
+            }
+        }
+
+        // 5-Branches Inner Selector Switcher
+        function showBranch(branchKey) {
+            const panels = document.querySelectorAll('.branch-content-panel');
+            panels.forEach(panel => {
+                panel.classList.add('hidden');
+                panel.classList.remove('block');
+            });
+
+            const activePanel = document.getElementById('branch-' + branchKey);
+            if (activePanel) {
+                activePanel.classList.remove('hidden');
+                activePanel.classList.add('block');
+            }
+
+            const btns = document.querySelectorAll('.branch-tab-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('bg-blue-900', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-700');
+            });
+
+            const activeBtn = document.getElementById('btn-' + branchKey);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-blue-900', 'text-white');
+                activeBtn.classList.remove('bg-white', 'text-slate-700');
+            }
+        }
+
+        // Gallery Filter Logic
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            items.forEach(item => {
+                if (category === 'all' || item.classList.contains(category)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            const filterBtns = document.querySelectorAll('.gallery-filter-btn');
+            filterBtns.forEach(btn => {
+                btn.classList.remove('bg-blue-900', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+            });
+            
+            const activeBtn = document.getElementById('btn-' + category);
+            if(activeBtn) {
+                activeBtn.classList.add('bg-blue-900', 'text-white');
+                activeBtn.classList.remove('bg-white', 'text-slate-600');
+            }
+        }
+
+        // Lightbox Popup Viewer Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        // Dynamically detects actual child image properties safely
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            if (img) {
+                lightboxImg.src = img.src;
+                lightbox.classList.remove('hidden');
+            }
+        }
+
+        // Close image view
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+        }
+
+        // Helper to instantly choose a pre-defined quick question
+        function setQuickQuestion(text) {
+            document.getElementById('custom_question_body').value = text;
+        }
+
+        // Direct WhatsApp Routing System (Replaced formspree and html2pdf)
+        function sendQuestionToWhatsApp() {
+            const parentName = document.getElementById('parent_inquiry_name').value.trim();
+            const questionBody = document.getElementById('custom_question_body').value.trim();
+
+            if (!questionBody) {
+                alert("Please select a quick question or type a custom question before sending.");
+                return;
+            }
+
+            // Clean format formatting for WhatsApp display message
+            let localizedText = `Hello The Mother Lap School Management,`;
+            if (parentName) {
+                localizedText += `\nMy name is: ${parentName}`;
+            }
+            localizedText += `\n\nQuestion: ${questionBody}`;
+
+            // URL Encode text string parameters
+            const encodedText = encodeURIComponent(localizedText);
+            const targetPhone = "923009808330"; // School Direct line in country format
+            
+            // Generate link string and route parent window
+            const whatsappUrl = `https://wa.me/${targetPhone}?text=${encodedText}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
